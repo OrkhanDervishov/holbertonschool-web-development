@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Site</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&family=Instrument+Serif:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *, *::before, *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --color-bg: #f5f2ec;
+        --color-ink: #1a1714;
+        --color-accent: #c84b2f;
+        --color-rule: #1a1714;
+        --font-display: 'Syne', sans-serif;
+        --font-serif: 'Instrument Serif', serif;
+      }
+
+      body {
+        background-color: var(--color-bg);
+        color: var(--color-ink);
+        font-family: var(--font-display);
+      }
+
+      /* ── Header ─────────────────────────────────── */
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 2.5rem;
+        height: 72px;
+        border-bottom: 2px solid var(--color-rule);
+        background-color: var(--color-bg);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      /* Logo link */
+      header a.logo {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        text-decoration: none;
+        color: inherit;
+      }
+
+      header a.logo img {
+        height: 36px;
+        width: auto;
+        display: block;
+      }
+
+      /* Placeholder shown when no real image is provided */
+      header a.logo .logo-placeholder {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 1.15rem;
+        letter-spacing: -0.03em;
+      }
+
+      header a.logo .logo-placeholder span.mark {
+        display: inline-block;
+        width: 28px;
+        height: 28px;
+        background-color: var(--color-ink);
+        border-radius: 50% 50% 50% 0;
+        transform: rotate(-8deg);
+        flex-shrink: 0;
+      }
+
+      /* Nav links */
+      nav {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+      }
+
+      nav a {
+        font-family: var(--font-display);
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: var(--color-ink);
+        padding: 0.45rem 1.1rem;
+        border: 1.5px solid transparent;
+        transition: border-color 0.18s ease, color 0.18s ease, background-color 0.18s ease;
+        position: relative;
+      }
+
+      nav a:hover {
+        border-color: var(--color-accent);
+        color: var(--color-accent);
+      }
+
+      nav a.active {
+        border-color: var(--color-ink);
+        background-color: var(--color-ink);
+        color: var(--color-bg);
+      }
+
+      nav a.active:hover {
+        border-color: var(--color-accent);
+        background-color: var(--color-accent);
+        color: var(--color-bg);
+      }
+    </style>
+  </head>
+  <body>
+
+    <header>
+      <!-- Logo: link wrapping an image (src swappable) -->
+      <a href="/" class="logo" aria-label="Home">
+        <!--
+          Replace the placeholder below with a real <img> when you have one:
+          <img src="assets/logo.svg" alt="Brand name" />
+        -->
+        <span class="logo-placeholder">
+          <span class="mark" aria-hidden="true"></span>
+          Brand
+        </span>
+      </a>
+
+      <!-- Navigation: block of 3 link elements -->
+      <nav aria-label="Primary navigation">
+        <a href="/work"     class="active">Work</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+      </nav>
+    </header>
+
+  </body>
+</html>
