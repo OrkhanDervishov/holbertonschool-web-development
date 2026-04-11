@@ -1,391 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Site</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&family=Instrument+Serif:ital@0;1&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      *, *::before, *::after {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-
-      :root {
-        --color-bg: #f5f2ec;
-        --color-ink: #1a1714;
-        --color-accent: #c84b2f;
-        --color-rule: #1a1714;
-        --font-display: 'Syne', sans-serif;
-        --font-serif: 'Instrument Serif', serif;
-      }
-
-      body {
-        background-color: var(--color-bg);
-        color: var(--color-ink);
-        font-family: var(--font-display);
-      }
-
-      /* ── Header ─────────────────────────────────── */
-      header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 2.5rem;
-        height: 72px;
-        border-bottom: 2px solid var(--color-rule);
-        background-color: var(--color-bg);
-        position: sticky;
-        top: 0;
-        z-index: 100;
-      }
-
-      /* Logo link */
-      header a.logo {
-        display: flex;
-        align-items: center;
-        gap: 0.6rem;
-        text-decoration: none;
-        color: inherit;
-      }
-
-      header a.logo img {
-        height: 36px;
-        width: auto;
-        display: block;
-      }
-
-      /* Placeholder shown when no real image is provided */
-      header a.logo .logo-placeholder {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-family: var(--font-display);
-        font-weight: 700;
-        font-size: 1.15rem;
-        letter-spacing: -0.03em;
-      }
-
-      header a.logo .logo-placeholder span.mark {
-        display: inline-block;
-        width: 28px;
-        height: 28px;
-        background-color: var(--color-ink);
-        border-radius: 50% 50% 50% 0;
-        transform: rotate(-8deg);
-        flex-shrink: 0;
-      }
-
-      /* Nav links */
-      nav {
-        display: flex;
-        align-items: center;
-        gap: 0.25rem;
-      }
-
-      nav a {
-        font-family: var(--font-display);
-        font-size: 0.8rem;
-        font-weight: 600;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        text-decoration: none;
-        color: var(--color-ink);
-        padding: 0.45rem 1.1rem;
-        border: 1.5px solid transparent;
-        transition: border-color 0.18s ease, color 0.18s ease, background-color 0.18s ease;
-        position: relative;
-      }
-
-      nav a:hover {
-        border-color: var(--color-accent);
-        color: var(--color-accent);
-      }
-
-      nav a.active {
-        border-color: var(--color-ink);
-        background-color: var(--color-ink);
-        color: var(--color-bg);
-      }
-
-      nav a.active:hover {
-        border-color: var(--color-accent);
-        background-color: var(--color-accent);
-        color: var(--color-bg);
-      }
-
-      /* ── Main & Section ─────────────────────────── */
-      main {
-        padding: 5rem 2.5rem 6rem;
-      }
-
-      main > section {
-        display: flex;
-        flex-direction: column;
-        gap: 5rem;
-      }
-
-      /* ── Hero block ─────────────────────────────── */
-      .hero {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 1.25rem;
-        max-width: 640px;
-        margin: 0 auto;
-      }
-
-      .hero h1 {
-        font-family: var(--font-serif);
-        font-size: clamp(2.6rem, 6vw, 4.2rem);
-        font-weight: 400;
-        line-height: 1.08;
-        letter-spacing: -0.02em;
-      }
-
-      .hero p {
-        font-family: var(--font-display);
-        font-size: 1rem;
-        font-weight: 400;
-        line-height: 1.65;
-        color: #5a5550;
-        max-width: 420px;
-      }
-
-      .hero button {
-        margin-top: 0.5rem;
-        padding: 0.75rem 2.2rem;
-        font-family: var(--font-display);
-        font-size: 0.8rem;
-        font-weight: 700;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        background-color: var(--color-ink);
-        color: var(--color-bg);
-        border: 2px solid var(--color-ink);
-        cursor: pointer;
-        transition: background-color 0.18s ease, color 0.18s ease;
-      }
-
-      .hero button:hover {
-        background-color: var(--color-accent);
-        border-color: var(--color-accent);
-      }
-
-      /* ── Cards block ─────────────────────────────── */
-      .cards-block {
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-        border-top: 2px solid var(--color-rule);
-        padding-top: 3rem;
-      }
-
-      .cards-block h2 {
-        font-family: var(--font-display);
-        font-size: 0.75rem;
-        font-weight: 700;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: #8a8480;
-        text-align: center;
-      }
-
-      .cards-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 1.5rem;
-      }
-
-      .card {
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
-      }
-
-      .card img {
-        width: 100%;
-        aspect-ratio: 4 / 3;
-        object-fit: cover;
-        display: block;
-        border: 1.5px solid #dedad4;
-        /* Placeholder tint when no real image is provided */
-        background-color: #e8e4dc;
-      }
-
-      .card h3 {
-        font-family: var(--font-serif);
-        font-size: 1.15rem;
-        font-weight: 400;
-        letter-spacing: -0.01em;
-      }
-
-      .card p {
-        font-family: var(--font-display);
-        font-size: 0.82rem;
-        line-height: 1.55;
-        color: #6b6560;
-      }
-
-      /* ── Quote section ───────────────────────────── */
-      .quote-section {
-        padding: 4rem 2.5rem 5rem;
-        border-top: 2px solid var(--color-rule);
-      }
-
-      .quote-inner {
-        display: flex;
-        align-items: center;
-        gap: 3rem;
-        max-width: 860px;
-        margin: 0 auto;
-        background-color: #fff;
-        border: 1.5px solid #dedad4;
-        padding: 2.5rem;
-      }
-
-      .quote-inner img {
-        width: 240px;
-        flex-shrink: 0;
-        aspect-ratio: 3 / 4;
-        object-fit: cover;
-        display: block;
-        background-color: #e8e4dc;
-        border: 1.5px solid #dedad4;
-      }
-
-      .quote-text {
-        display: flex;
-        flex-direction: column;
-        gap: 1.1rem;
-      }
-
-      .quote-text blockquote {
-        font-family: var(--font-serif);
-        font-size: clamp(1.15rem, 2.2vw, 1.55rem);
-        font-weight: 400;
-        font-style: italic;
-        line-height: 1.5;
-        letter-spacing: -0.01em;
-        color: var(--color-ink);
-        border-left: 3px solid var(--color-accent);
-        padding-left: 1.25rem;
-      }
-
-      .quote-text .quote-author {
-        font-family: var(--font-display);
-        font-size: 0.9rem;
-        font-weight: 700;
-        letter-spacing: 0.04em;
-        color: var(--color-ink);
-      }
-
-      .quote-text .quote-subtitle {
-        font-family: var(--font-display);
-        font-size: 0.8rem;
-        color: #8a8480;
-        letter-spacing: 0.02em;
-      }
-    </style>
-  </head>
-  <body>
-
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Page</title>
+</head>
+<body>
     <header>
-      <!-- Logo: link wrapping an image (src swappable) -->
-      <a href="/" class="logo" aria-label="Home">
-        <!--
-          Replace the placeholder below with a real <img> when you have one:
-          <img src="assets/logo.svg" alt="Brand name" />
-        -->
-        <span class="logo-placeholder">
-          <span class="mark" aria-hidden="true"></span>
-          Brand
-        </span>
-      </a>
-
-      <!-- Navigation: block of 3 link elements -->
-      <nav aria-label="Primary navigation">
-        <a href="/work"     class="active">Work</a>
-        <a href="/about">About</a>
-        <a href="/contact">Contact</a>
-      </nav>
+        <a href="/">
+            <img src="../assets/logo.svg" alt="Logo">
+        </a>
+        <div>
+            <a href="/">COURSES</a>
+            <a href="/">PRICING</a>
+            <a href="/">LOGIN</a>
+        </div>
     </header>
-
     <main>
-      <section>
-
-        <!-- Block 1: Hero — h1, tagline text, CTA button -->
-        <div class="hero">
-          <h1>Craft that speaks before words do.</h1>
-          <p>We shape ideas into things people remember — three words at a time.</p>
-          <button type="button">Get started</button>
-        </div>
-
-        <!-- Block 2: Cards — h2 heading + grid of 4 cards -->
-        <div class="cards-block">
-          <h2>Featured work</h2>
-
-          <div class="cards-grid">
-
-            <!-- Card 1 -->
-            <div class="card">
-              <img src="" alt="Project Aether" />
-              <h3>Aether Studio</h3>
-              <p>Brand identity &amp; digital experience for a next-gen audio platform.</p>
+        <section class="hero">
+            <div class="title">
+                <h1>Get schooled</h1>
+                <p>SMILES GRIN LAUGH</p>
+                <button>REGISTER FOR FREE</button>
             </div>
-
-            <!-- Card 2 -->
-            <div class="card">
-              <img src="" alt="Project Moss" />
-              <h3>Moss &amp; Stone</h3>
-              <p>Packaging system and visual language for an artisan skincare line.</p>
+            <div class="pros">
+                <h2><span class="purple-word">Learn</span> from the pros</h2>
+                <div class="people">
+                    <div>
+                        <img src="../assets/profile_1.png" alt="Person" class="round-image">
+                        <h3>Philip Massey</h3>
+                        <blockquote>« Smile of the year » 2018 - 2019</blockquote>
+                    </div>
+                    <div>
+                        <img src="../assets/profile_2.png" alt="Person" class="round-image">
+                        <h3>Nannie Lawrence</h3>
+                        <blockquote>Best « little smile » 2017</blockquote>
+                    </div>
+                    <div>
+                        <img src="../assets/profile_3.png" alt="Person" class="round-image">
+                        <h3>Bruce Walters</h3>
+                        <blockquote>Best « Friend Smile » live performance 2019</blockquote>
+                    </div>
+                    <div>
+                        <img src="../assets/profile_4.png" alt="Person" class="round-image">
+                        <h3>Henry Hughes</h3>
+                        <blockquote>« 24h smiles » winner 2016 - 2019</blockquote>
+                    </div>
+                </div>
             </div>
-
-            <!-- Card 3 -->
-            <div class="card">
-              <img src="" alt="Project Lumen" />
-              <h3>Lumen Archive</h3>
-              <p>Editorial design and interactive catalogue for a photography collective.</p>
+        </section>
+        <section class="author">
+            <div>
+                <img src="../assets/author.png" alt="Person">
+                <div>
+                    <blockquote>« Those tutorials are concise and go straight to the point. I can’t think of a better place to learn smiling. And it’s so fun!</blockquote>
+                    <p class="name">Person Name</p>
+                    <p class="occupation">weather presenter</p>
+                </div>
             </div>
-
-            <!-- Card 4 -->
-            <div class="card">
-              <img src="" alt="Project Fold" />
-              <h3>Fold Systems</h3>
-              <p>Product design and motion suite for a B2B SaaS dashboard tool.</p>
-            </div>
-
-          </div>
-        </div>
-
-      </section>
-      <!-- Quote section -->
-      <section class="quote-section">
-        <div class="quote-inner">
-
-          <!-- Image -->
-          <img src="" alt="Portrait of the author" />
-
-          <!-- Text block: blockquote, author, subtitle -->
-          <div class="quote-text">
-            <blockquote>
-              "Design is not just what it looks like and feels like. Design is how it works."
-            </blockquote>
-            <p class="quote-author">Eleanor Voss</p>
-            <p class="quote-subtitle">Creative Director, Fold Systems</p>
-          </div>
-
-        </div>
-      </section>
-
+        </section>
     </main>
-
-  </body>
+</body>
 </html>
